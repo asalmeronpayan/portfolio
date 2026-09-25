@@ -3,8 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arnau Salmerón — Portfolio</title>
-<meta name="description" content="Portfolio de Arnau Salmerón, diseñador web en Barcelona.">
+<!-- ════ SEO — si cambias de dominio, actualiza la URL aquí, en el JSON-LD, robots.txt y sitemap.xml ════ -->
+<title>Arnau Salmerón — Diseñador Web en Barcelona | Portfolio</title>
+<meta name="description" content="Arnau Salmerón, diseñador web en Barcelona. Landings y webs a medida para empresas: diseño limpio, rápidas y pensadas para convertir. Mira mis proyectos.">
+<meta name="author" content="Arnau Salmerón">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FFD400">
+<link rel="canonical" href="https://asalmeronpayan.github.io/portfolio/">
+
+<!-- Open Graph (WhatsApp, LinkedIn, Facebook…) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arnau Salmerón">
+<meta property="og:title" content="Arnau Salmerón — Diseñador Web en Barcelona">
+<meta property="og:description" content="Landings y webs a medida para empresas. Mira mis proyectos y hablemos del tuyo.">
+<meta property="og:url" content="https://asalmeronpayan.github.io/portfolio/">
+<meta property="og:image" content="https://asalmeronpayan.github.io/portfolio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arnau Salmerón — Diseñador Web · Barcelona">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="ca_ES">
+<meta property="og:locale:alternate" content="en_GB">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arnau Salmerón — Diseñador Web en Barcelona">
+<meta name="twitter:description" content="Landings y webs a medida para empresas. Mira mis proyectos y hablemos del tuyo.">
+<meta name="twitter:image" content="https://asalmeronpayan.github.io/portfolio/og-image.png">
+<meta name="twitter:image:alt" content="Arnau Salmerón — Diseñador Web · Barcelona">
+
+<!-- Datos estructurados: quién eres y qué has hecho -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://asalmeronpayan.github.io/portfolio/#arnau",
+      "name": "Arnau Salmerón",
+      "jobTitle": "Diseñador Web",
+      "url": "https://asalmeronpayan.github.io/portfolio/",
+      "image": "https://asalmeronpayan.github.io/portfolio/og-image.png",
+      "email": "mailto:asalmeronpayan@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
+      "knowsAbout": ["Diseño web", "Landing pages", "Desarrollo web", "UX/UI"],
+      "sameAs": ["https://www.linkedin.com/in/arnau-salmer%C3%B3n-ab566426a"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://asalmeronpayan.github.io/portfolio/#web",
+      "url": "https://asalmeronpayan.github.io/portfolio/",
+      "name": "Arnau Salmerón — Portfolio",
+      "inLanguage": ["es", "ca", "en"],
+      "author": { "@id": "https://asalmeronpayan.github.io/portfolio/#arnau" }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Proyectos seleccionados",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "CreativeWork", "name": "Constructia", "url": "https://constructia.es/", "description": "Landing para SaaS de plataformas CAE.", "image": "https://asalmeronpayan.github.io/portfolio/capturas/constructia.png", "creator": { "@id": "https://asalmeronpayan.github.io/portfolio/#arnau" } } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "CreativeWork", "name": "SmartConstructIA", "url": "https://smartconstructia.com/", "description": "Landing para empresa de automatizaciones con IA.", "image": "https://asalmeronpayan.github.io/portfolio/capturas/smartconstructia.png", "creator": { "@id": "https://asalmeronpayan.github.io/portfolio/#arnau" } } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "CreativeWork", "name": "AR Asesores Mollet", "url": "https://www.gestoriavalles.es/", "description": "Landing para asesoría y gestoría en Mollet.", "creator": { "@id": "https://asalmeronpayan.github.io/portfolio/#arnau" } } }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%2300C24A' stroke='%230A0A0A' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,6 +199,7 @@ h1 em{font-style:normal;color:var(--yellow);-webkit-text-stroke:3px var(--ink);p
   padding:13px 0;
 }
 .bar .wrap{display:flex;justify-content:space-between;gap:16px}
+.bar h2{font:inherit;letter-spacing:inherit}
 
 /* ── GRID ── */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;padding-top:52px;padding-bottom:70px}
@@ -211,7 +276,7 @@ h1 em{font-style:normal;color:var(--yellow);-webkit-text-stroke:3px var(--ink);p
 
 /* ── CARD BODY ── */
 .body{padding:22px 20px 24px;display:flex;flex-direction:column;gap:13px;flex:1}
-.body h2{
+.body h3{
   font-family:"Archivo Black",sans-serif;
   font-size:clamp(1.05rem,6.8cqi,1.9rem);line-height:1;text-transform:uppercase;letter-spacing:-.02em;
   overflow-wrap:anywhere;
@@ -237,8 +302,8 @@ h1 em{font-style:normal;color:var(--yellow);-webkit-text-stroke:3px var(--ink);p
 
 /* ── FOOTER ── */
 footer{border-top:var(--line) solid var(--ink);background:var(--ink);color:var(--bg);padding:58px 0 40px}
-footer h3{font-family:"Archivo Black",sans-serif;font-size:clamp(1.9rem,6vw,3.6rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
-footer h3 span{color:var(--yellow)}
+footer h2{font-family:"Archivo Black",sans-serif;font-size:clamp(1.9rem,6vw,3.6rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
+footer h2 span{color:var(--yellow)}
 .mail{
   display:inline-block;margin-top:24px;
   background:var(--yellow);color:var(--ink);
@@ -363,13 +428,13 @@ footer h3 span{color:var(--yellow)}
   </div>
 </header>
 
-<div class="bar"><div class="wrap"><span data-i18n="selected">Proyectos seleccionados</span><span id="count"></span></div></div>
+<div class="bar"><div class="wrap"><h2 data-i18n="selected">Proyectos seleccionados</h2><span id="count"></span></div></div>
 
 <main class="wrap grid" id="grid"></main>
 
 <footer>
   <div class="wrap">
-    <h3 data-i18n-html="ctaTitle">¿Trabajamos <span>juntos</span>?</h3>
+    <h2 data-i18n-html="ctaTitle">¿Trabajamos <span>juntos</span>?</h2>
     <a class="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=asalmeronpayan@gmail.com&su=Proyecto%20web%20%E2%80%94%20desde%20el%20portfolio" target="_blank" rel="noopener noreferrer"><span data-i18n="ctaBtn">¿Hablamos de tu proyecto?</span><span>&#8594;</span></a>
     <div class="mail-alt"><span data-i18n="copyLabel">O copia mi correo:</span> <a href="mailto:asalmeronpayan@gmail.com" id="copiar">asalmeronpayan@gmail.com</a></div>
     <div class="fine">
@@ -447,7 +512,8 @@ const TEXTOS = {
     viewFull: "Ver web completa",
     loading: "Cargando preview…",
     mailSubject: "Proyecto web — desde el portfolio",
-    pageTitle: "Arnau Salmerón — Diseñador Web"
+    pageTitle: "Arnau Salmerón — Diseñador Web en Barcelona | Portfolio",
+    metaDesc: "Arnau Salmerón, diseñador web en Barcelona. Landings y webs a medida para empresas: diseño limpio, rápidas y pensadas para convertir. Mira mis proyectos."
   },
   ca: {
     htmlLang: "ca",
@@ -464,7 +530,8 @@ const TEXTOS = {
     viewFull: "Veure web completa",
     loading: "Carregant previsualització…",
     mailSubject: "Projecte web — des del portfolio",
-    pageTitle: "Arnau Salmerón — Dissenyador Web"
+    pageTitle: "Arnau Salmerón — Dissenyador Web a Barcelona | Portfolio",
+    metaDesc: "Arnau Salmerón, dissenyador web a Barcelona. Landings i webs a mida per a empreses: disseny net, ràpides i pensades per convertir. Mira els meus projectes."
   },
   en: {
     htmlLang: "en",
@@ -481,7 +548,8 @@ const TEXTOS = {
     viewFull: "View full site",
     loading: "Loading preview…",
     mailSubject: "Web project — from the portfolio",
-    pageTitle: "Arnau Salmerón — Web Designer"
+    pageTitle: "Arnau Salmerón — Web Designer in Barcelona | Portfolio",
+    metaDesc: "Arnau Salmerón, web designer in Barcelona. Landing pages and custom websites for businesses: clean, fast and built to convert. See my work."
   }
 };
 
@@ -516,7 +584,7 @@ document.getElementById("grid").innerHTML = PROYECTOS.map(function (p, i) {
     '<div class="card-num"><span>' + pad(i + 1) + '</span><span>' + esc(host(p.url)) + '</span></div>' +
     '<div class="shot' + (p.img ? ' ready' : '') + '">' +
       (p.img
-        ? '<img src="' + esc(p.img) + '" alt="Vista previa de ' + esc(p.nombre) + '" loading="lazy">'
+        ? '<img src="' + esc(p.img) + '" alt="Captura de la web ' + esc(p.nombre) + ' diseñada por Arnau Salmerón" loading="lazy" width="1440" height="900">'
         : '<div class="loading">' + esc(t().loading) + '</div>' +
           '<iframe src="' + esc(p.url) + '" loading="lazy" title="Vista previa de ' + esc(p.nombre) + '" ' +
           'sandbox="allow-scripts allow-same-origin" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>'
@@ -524,7 +592,7 @@ document.getElementById("grid").innerHTML = PROYECTOS.map(function (p, i) {
       '<span class="veil"><b>' + esc(t().viewFull) + '</b></span>' +
     '</div>' +
     '<div class="body">' +
-      '<h2>' + esc(p.nombre) + '</h2>' +
+      '<h3>' + esc(p.nombre) + '</h3>' +
       '<p>' + esc(p.desc[LANG] || p.desc.es) + '</p>' +
       '<div class="tags">' + ((p.tags && (p.tags[LANG] || p.tags.es)) || []).map(x => '<span>' + esc(x) + '</span>').join("") + '</div>' +
     '</div>' +
@@ -684,7 +752,7 @@ function revelar() {
   if (!observador) return;
   // en el carrusel aparece el bloque entero; si no, cada tarjeta
   const proyectos = esMovil.matches ? "#grid" : ".card";
-  document.querySelectorAll("h1, .role, .head-meta, .bar, " + proyectos + ", footer h3, .mail, .mail-alt, .fine")
+  document.querySelectorAll("h1, .role, .head-meta, .bar, " + proyectos + ", footer h2, .mail, .mail-alt, .fine")
     .forEach(function (el) {
       if (el.classList.contains("in")) return;
       el.classList.add("reveal");
@@ -699,6 +767,7 @@ function aplicarIdioma(lang) {
 
   document.documentElement.lang = T.htmlLang;
   document.title = T.pageTitle;
+  document.querySelector('meta[name="description"]').setAttribute("content", T.metaDesc);
 
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     const k = el.getAttribute("data-i18n");
