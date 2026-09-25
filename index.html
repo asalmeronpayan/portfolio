@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arnau Salmerón — Portfolio</title>
+<meta name="description" content="Portfolio de Arnau Salmerón, diseñador web en Barcelona.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%2300C24A' stroke='%230A0A0A' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF7;
+  --ink:#0A0A0A;
+  --paper:#FFFFFF;
+  --yellow:#FFD400;
+  --yellow-hi:#FFF27A;
+  --yellow-deep:#E5A800;
+  --live:#00C24A;
+  --line:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Archivo",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(10,10,10,.045) 0 1px,transparent 1px 34px),
+    repeating-linear-gradient(90deg,rgba(10,10,10,.045) 0 1px,transparent 1px 34px);
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+/* ── HEADER ── */
+header{border-top:var(--line) solid var(--ink);border-bottom:var(--line) solid var(--ink);background:var(--paper)}
+.head-grid{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:54px 0 34px}
+@media(max-width:720px){.head-grid{grid-template-columns:1fr;align-items:start}.head-meta{text-align:left}}
+h1{
+  font-family:"Archivo Black",sans-serif;
+  font-size:clamp(2.7rem,9vw,6.6rem);
+  line-height:.88;text-transform:uppercase;letter-spacing:-.03em;
+}
+h1 em{font-style:normal;color:var(--yellow);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+.role{
+  margin-top:20px;display:inline-block;
+  background:var(--yellow);border:var(--line) solid var(--ink);
+  box-shadow:7px 7px 0 var(--ink);
+  padding:9px 16px;
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+}
+.head-meta{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:.1em;text-align:right;line-height:2}
+.head-meta a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--yellow-deep)}
+.head-meta a:hover{background:var(--yellow)}
+
+/* ── ESTADO DISPONIBLE ── */
+.live{display:inline-flex;align-items:center;gap:8px}
+.dot{
+  width:11px;height:11px;flex:none;
+  background:var(--live);
+  border:2px solid var(--ink);
+  border-radius:50%;
+  box-shadow:0 0 0 0 rgba(0,194,74,.75);
+  animation:pulse 2s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(0,194,74,.7)}
+  70%{box-shadow:0 0 0 9px rgba(0,194,74,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,194,74,0)}
+}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+
+/* ── SELECTOR DE IDIOMA ── */
+.lang{position:fixed;top:18px;right:18px;z-index:60}
+.lang-btn{
+  display:flex;align-items:center;gap:9px;
+  background:var(--paper);color:var(--ink);
+  border:var(--line) solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
+  padding:9px 13px;cursor:pointer;
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+}
+.lang-btn:hover{background:var(--yellow)}
+.lang-btn .car{font-size:9px;transition:transform .15s}
+.lang[data-open="true"] .lang-btn{background:var(--yellow)}
+.lang[data-open="true"] .car{transform:rotate(180deg)}
+.lang-menu{
+  position:absolute;top:calc(100% + 7px);right:0;
+  min-width:100%;
+  background:var(--paper);
+  border:var(--line) solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
+  display:none;
+}
+.lang[data-open="true"] .lang-menu{display:block}
+.lang-menu button{
+  display:flex;align-items:center;gap:9px;width:100%;
+  background:none;border:0;cursor:pointer;
+  padding:10px 13px;text-align:left;
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);
+  border-bottom:2px solid var(--ink);
+}
+.lang-menu button:last-child{border-bottom:0}
+.lang-menu button:hover,.lang-menu button:focus{background:var(--yellow);outline:0}
+.lang-menu button[aria-current="true"]{background:var(--ink);color:var(--yellow)}
+.flag{
+  width:22px;height:15px;flex:none;display:block;
+  border:1.5px solid var(--ink);
+}
+#langFlag{display:flex;align-items:center}
+@media(max-width:720px){
+  .lang{top:12px;right:12px}
+  .lang-btn{padding:7px 10px;font-size:12px}
+}
+
+/* ── SECTION BAR ── */
+.bar{
+  background:var(--ink);color:var(--bg);
+  border-bottom:var(--line) solid var(--ink);
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  padding:13px 0;
+}
+.bar .wrap{display:flex;justify-content:space-between;gap:16px}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;padding:52px 0 70px}
+@media(max-width:820px){.grid{grid-template-columns:1fr;gap:30px}}
+
+.card{
+  background:var(--paper);
+  border:var(--line) solid var(--ink);
+  box-shadow:12px 12px 0 var(--ink);
+  display:flex;flex-direction:column;
+  cursor:pointer;
+  transition:transform .12s steps(2),box-shadow .12s steps(2);
+}
+.card:hover,.card:focus-within{transform:translate(-5px,-5px);box-shadow:10px 10px 0 var(--yellow),18px 18px 0 var(--ink)}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+
+.card-num{
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;
+  border-bottom:var(--line) solid var(--ink);
+  padding:9px 15px;display:flex;justify-content:space-between;gap:12px;
+  background:var(--yellow);
+}
+
+/* ── PREVIEW ── */
+.shot{
+  position:relative;
+  border-bottom:var(--line) solid var(--ink);
+  aspect-ratio:16/10;overflow:hidden;background:var(--bg);
+}
+.shot iframe{
+  position:absolute;top:0;left:0;
+  width:1440px;height:900px;
+  transform-origin:0 0;
+  border:0;pointer-events:none;
+  background:#fff;
+}
+.shot img{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  display:block;
+}
+.veil{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;
+  transition:background .12s;
+}
+.card:hover .veil,.card:focus-within .veil{background:rgba(255,242,122,.35)}
+.veil b{
+  opacity:0;
+  background:var(--ink);color:var(--yellow);
+  border:3px solid var(--yellow-hi);
+  padding:12px 20px;
+  font-family:"JetBrains Mono",monospace;font-size:13px;
+  letter-spacing:.16em;text-transform:uppercase;
+  transition:opacity .12s;
+}
+.card:hover .veil b,.card:focus-within .veil b{opacity:1}
+.loading{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink);background:var(--bg);
+}
+.shot.ready .loading{display:none}
+
+/* ── CARD BODY ── */
+.body{padding:22px 20px 24px;display:flex;flex-direction:column;gap:13px;flex:1}
+.body h2{
+  font-family:"Archivo Black",sans-serif;
+  font-size:1.9rem;line-height:1;text-transform:uppercase;letter-spacing:-.02em;
+}
+.body p{font-size:15.5px;max-width:46ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.tags span{
+  border:3px solid var(--ink);padding:4px 10px;
+  font-family:"JetBrains Mono",monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+}
+.go{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  background:var(--ink);color:var(--paper);
+  padding:15px 20px;text-decoration:none;
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+}
+.card:hover .go,.go:hover,.go:focus{background:var(--yellow);color:var(--ink);outline:0}
+.go:focus-visible{outline:4px solid var(--yellow);outline-offset:-8px}
+.go i{font-style:normal;font-size:19px}
+
+/* ── FOOTER ── */
+footer{border-top:var(--line) solid var(--ink);background:var(--ink);color:var(--bg);padding:58px 0 40px}
+footer h3{font-family:"Archivo Black",sans-serif;font-size:clamp(1.9rem,6vw,3.6rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
+footer h3 span{color:var(--yellow)}
+.mail{
+  display:inline-block;margin-top:24px;
+  background:var(--yellow);color:var(--ink);
+  border:var(--line) solid var(--paper);box-shadow:9px 9px 0 var(--yellow-deep);
+  padding:15px 24px;text-decoration:none;
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:16px;letter-spacing:.08em;word-break:break-word;
+  display:inline-flex;align-items:center;gap:14px;
+}
+.mail:hover{background:var(--paper)}
+.mail-alt{
+  margin-top:20px;
+  font-family:"JetBrains Mono",monospace;font-size:12.5px;
+  letter-spacing:.06em;color:rgba(250,250,247,.62);
+}
+.mail-alt a{color:var(--paper);text-decoration:none;border-bottom:2px solid var(--yellow)}
+.mail-alt a:hover{color:var(--yellow)}
+.fine-li{color:var(--bg);text-decoration:none;border-bottom:2px solid var(--yellow)}
+.fine-li:hover{color:var(--yellow)}
+.fine{
+  margin-top:46px;padding-top:18px;border-top:2px solid rgba(250,250,247,.3);
+  font-family:"JetBrains Mono",monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="lang" id="lang" data-open="false">
+  <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+    <span id="langFlag"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg></span><span id="langCode">ES</span><span class="car">&#9660;</span>
+  </button>
+  <div class="lang-menu" id="langMenu" role="menu">
+    <button type="button" data-lang="es" role="menuitem"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg><span>ES</span></button>
+    <button type="button" data-lang="ca" role="menuitem"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#FCDD09"/><g fill="#DA121A"><rect y=".222" width="3" height=".222"/><rect y=".667" width="3" height=".222"/><rect y="1.111" width="3" height=".222"/><rect y="1.556" width="3" height=".222"/></g></svg><span>CA</span></button>
+    <button type="button" data-lang="en" role="menuitem"><svg class="flag" viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#FFF" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#FFF" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8"/></svg><span>EN</span></button>
+  </div>
+</div>
+
+
+<header>
+  <div class="wrap head-grid">
+    <div>
+      <h1>Arnau<br>Salmer<em>ó</em>n</h1>
+      <div class="role" data-i18n="role">Diseñador Web · Barcelona</div>
+    </div>
+    <div class="head-meta">
+      <span data-i18n="portfolioYear">Portfolio 2026</span><br>
+      <a href="mailto:asalmeronpayan@gmail.com">asalmeronpayan@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/arnau-salmer%C3%B3n-ab566426a" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a><br>
+      <span class="live"><span class="dot" aria-hidden="true"></span><span data-i18n="available">Disponible para colaborar</span></span>
+    </div>
+  </div>
+</header>
+
+<div class="bar"><div class="wrap"><span data-i18n="selected">Proyectos seleccionados</span><span id="count"></span></div></div>
+
+<main class="wrap grid" id="grid"></main>
+
+<footer>
+  <div class="wrap">
+    <h3 data-i18n-html="ctaTitle">¿Trabajamos <span>juntos</span>?</h3>
+    <a class="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=asalmeronpayan@gmail.com&su=Proyecto%20web%20%E2%80%94%20desde%20el%20portfolio" target="_blank" rel="noopener noreferrer"><span data-i18n="ctaBtn">¿Hablamos de tu proyecto?</span><span>&#8594;</span></a>
+    <div class="mail-alt"><span data-i18n="copyLabel">O copia mi correo:</span> <a href="mailto:asalmeronpayan@gmail.com" id="copiar">asalmeronpayan@gmail.com</a></div>
+    <div class="fine">
+      <span>Arnau Salmerón · <span data-i18n="roleShort">Diseñador Web</span></span>
+      <span><a class="fine-li" href="https://www.linkedin.com/in/arnau-salmer%C3%B3n-ab566426a" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a></span>
+      <span>Barcelona, ES</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ════ EDITA AQUÍ: añade, quita o cambia proyectos ════ */
+const PROYECTOS = [
+  {
+    url: "https://constructia.es/",
+    img: "capturas/constructia.png",
+    nombre: "Constructia",
+    desc: {
+      es: "Landing para SaaS de plataformas CAE.",
+      ca: "Landing per a SaaS de plataformes CAE.",
+      en: "Landing page for a CAE platform SaaS."
+    },
+    tags: {
+      es: ["Landing", "Web personalizada"],
+      ca: ["Landing", "Web personalitzada"],
+      en: ["Landing page", "Custom build"]
+    }
+  },
+  {
+    url: "https://smartconstructia.com/",
+    img: "capturas/smartconstructia.png",
+    nombre: "SmartConstructIA",
+    desc: {
+      es: "Landing para empresa de automatizaciones con IA.",
+      ca: "Landing per a empresa d'automatitzacions amb IA.",
+      en: "Landing page for an AI automation company."
+    },
+    tags: {
+      es: ["Landing", "Web personalizada"],
+      ca: ["Landing", "Web personalitzada"],
+      en: ["Landing page", "Custom build"]
+    }
+  },
+  {
+    url: "https://www.gestoriavalles.es/",
+    nombre: "AR Asesores Mollet",
+    desc: {
+      es: "Landing para asesoría y gestoría en Mollet.",
+      ca: "Landing per a assessoria i gestoria a Mollet.",
+      en: "Landing page for a tax and business consultancy."
+    },
+    tags: {
+      es: ["Landing"],
+      ca: ["Landing"],
+      en: ["Landing page"]
+    }
+  }
+];
+/* ═════════════════════════════════════════════════════ */
+
+/* ════ TRADUCCIONES ════ */
+const TEXTOS = {
+  es: {
+    htmlLang: "es",
+    role: "Diseñador Web · Barcelona",
+    roleShort: "Diseñador Web",
+    portfolioYear: "Portfolio 2026",
+    available: "Disponible para colaborar",
+    selected: "Proyectos seleccionados",
+    ctaTitle: "¿Trabajamos <span>juntos</span>?",
+    ctaBtn: "¿Hablamos de tu proyecto?",
+    copyLabel: "O copia mi correo:",
+    copied: "¡Copiado! ✓",
+    visit: "Visitar",
+    viewFull: "Ver web completa",
+    loading: "Cargando preview…",
+    mailSubject: "Proyecto web — desde el portfolio",
+    pageTitle: "Arnau Salmerón — Diseñador Web"
+  },
+  ca: {
+    htmlLang: "ca",
+    role: "Dissenyador Web · Barcelona",
+    roleShort: "Dissenyador Web",
+    portfolioYear: "Portfolio 2026",
+    available: "Disponible per col·laborar",
+    selected: "Projectes seleccionats",
+    ctaTitle: "Treballem <span>junts</span>?",
+    ctaBtn: "Parlem del teu projecte?",
+    copyLabel: "O copia el meu correu:",
+    copied: "Copiat! ✓",
+    visit: "Visitar",
+    viewFull: "Veure web completa",
+    loading: "Carregant previsualització…",
+    mailSubject: "Projecte web — des del portfolio",
+    pageTitle: "Arnau Salmerón — Dissenyador Web"
+  },
+  en: {
+    htmlLang: "en",
+    role: "Web Designer · Barcelona",
+    roleShort: "Web Designer",
+    portfolioYear: "Portfolio 2026",
+    available: "Available for work",
+    selected: "Selected projects",
+    ctaTitle: "Let's work <span>together</span>",
+    ctaBtn: "Let's talk about your project",
+    copyLabel: "Or copy my email:",
+    copied: "Copied! ✓",
+    visit: "Visit",
+    viewFull: "View full site",
+    loading: "Loading preview…",
+    mailSubject: "Web project — from the portfolio",
+    pageTitle: "Arnau Salmerón — Web Designer"
+  }
+};
+
+const BANDERAS = {
+  es: '<svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg>',
+  ca: '<svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#FCDD09"/><g fill="#DA121A"><rect y=".222" width="3" height=".222"/><rect y=".667" width="3" height=".222"/><rect y="1.111" width="3" height=".222"/><rect y="1.556" width="3" height=".222"/></g></svg>',
+  en: '<svg class="flag" viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#FFF" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#FFF" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8"/></svg>'
+};
+
+/* Idioma inicial: el guardado, si no el del navegador, si no español */
+function idiomaInicial() {
+  try {
+    const g = localStorage.getItem("idioma");
+    if (g && TEXTOS[g]) return g;
+  } catch (e) {}
+  const nav = (navigator.language || "es").slice(0, 2).toLowerCase();
+  return TEXTOS[nav] ? nav : "es";
+}
+
+let LANG = idiomaInicial();
+const t = () => TEXTOS[LANG];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host = u => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return u; } };
+const pad = n => String(n).padStart(2, "0");
+
+document.getElementById("count").textContent = pad(PROYECTOS.length) + " / " + pad(PROYECTOS.length);
+
+function pintarProyectos() {
+document.getElementById("grid").innerHTML = PROYECTOS.map(function (p, i) {
+  return '<article class="card">' +
+    '<div class="card-num"><span>' + pad(i + 1) + '</span><span>' + esc(host(p.url)) + '</span></div>' +
+    '<div class="shot' + (p.img ? ' ready' : '') + '">' +
+      (p.img
+        ? '<img src="' + esc(p.img) + '" alt="Vista previa de ' + esc(p.nombre) + '" loading="lazy">'
+        : '<div class="loading">' + esc(t().loading) + '</div>' +
+          '<iframe src="' + esc(p.url) + '" loading="lazy" title="Vista previa de ' + esc(p.nombre) + '" ' +
+          'sandbox="allow-scripts allow-same-origin" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>'
+      ) +
+      '<span class="veil"><b>' + esc(t().viewFull) + '</b></span>' +
+    '</div>' +
+    '<div class="body">' +
+      '<h2>' + esc(p.nombre) + '</h2>' +
+      '<p>' + esc(p.desc[LANG] || p.desc.es) + '</p>' +
+      '<div class="tags">' + ((p.tags && (p.tags[LANG] || p.tags.es)) || []).map(x => '<span>' + esc(x) + '</span>').join("") + '</div>' +
+    '</div>' +
+    '<a class="go" href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer">' +
+      '<span>' + esc(t().visit) + ' ' + esc(p.nombre) + '</span><i>↗</i></a>' +
+  '</article>';
+}).join("");
+}
+pintarProyectos();
+
+/* El correo de respaldo se copia al portapapeles en vez de depender del cliente de correo */
+(function () {
+  const a = document.getElementById("copiar");
+  if (!a || !navigator.clipboard) return;          // sin API: queda el mailto normal
+  const original = a.textContent;
+  a.addEventListener("click", function (e) {
+    e.preventDefault();
+    navigator.clipboard.writeText("asalmeronpayan@gmail.com").then(function () {
+      a.textContent = t().copied;
+      setTimeout(function () { a.textContent = original; }, 2000);
+    }).catch(function () {
+      window.location.href = "mailto:asalmeronpayan@gmail.com";
+    });
+  });
+})();
+
+/* Escala el iframe (1440px de ancho virtual) al ancho real de la tarjeta */
+function fit() {
+  document.querySelectorAll(".shot").forEach(function (s) {
+    const f = s.querySelector("iframe");
+    if (f) f.style.transform = "scale(" + (s.clientWidth / 1440) + ")";
+  });
+}
+fit();
+addEventListener("resize", fit);
+
+/* El clic en cualquier parte de la tarjeta abre la web */
+document.getElementById("grid").addEventListener("click", function (e) {
+  if (e.target.closest("a")) return;          // el enlace ya navega por su cuenta
+  const card = e.target.closest(".card");
+  if (card) card.querySelector(".go").click();
+});
+
+/* Oculta "Cargando…" cuando el iframe responde; si tarda, lo quita igualmente */
+function vigilarIframes() {
+  document.querySelectorAll(".shot").forEach(function (s) {
+    const f = s.querySelector("iframe");
+    if (!f) return;                     // las capturas ya nacen "ready"
+    const done = function () { s.classList.add("ready"); };
+    f.addEventListener("load", done);
+    setTimeout(done, 6000);
+  });
+}
+vigilarIframes();
+
+/* ════ SELECTOR DE IDIOMA ════ */
+function aplicarIdioma(lang) {
+  LANG = TEXTOS[lang] ? lang : "es";
+  const T = t();
+
+  document.documentElement.lang = T.htmlLang;
+  document.title = T.pageTitle;
+
+  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+    const k = el.getAttribute("data-i18n");
+    if (T[k]) el.textContent = T[k];
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+    const k = el.getAttribute("data-i18n-html");
+    if (T[k]) el.innerHTML = T[k];
+  });
+
+  // asunto del correo en el idioma activo
+  const cta = document.querySelector(".mail");
+  if (cta) {
+    cta.href = "https://mail.google.com/mail/?view=cm&fs=1&to=asalmeronpayan@gmail.com&su=" +
+               encodeURIComponent(T.mailSubject);
+  }
+
+  // estado del botón
+  document.getElementById("langFlag").innerHTML = BANDERAS[LANG];
+  document.getElementById("langCode").textContent = LANG.toUpperCase();
+  document.querySelectorAll("#langMenu button").forEach(function (b) {
+    b.setAttribute("aria-current", b.dataset.lang === LANG ? "true" : "false");
+  });
+
+  pintarProyectos();
+  fit();
+  vigilarIframes();
+
+  try { localStorage.setItem("idioma", LANG); } catch (e) {}
+}
+
+(function () {
+  const caja = document.getElementById("lang");
+  const btn  = document.getElementById("langBtn");
+
+  const abrir = function (v) {
+    caja.dataset.open = v ? "true" : "false";
+    btn.setAttribute("aria-expanded", v ? "true" : "false");
+  };
+
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    abrir(caja.dataset.open !== "true");
+  });
+
+  document.querySelectorAll("#langMenu button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      aplicarIdioma(b.dataset.lang);
+      abrir(false);
+      btn.focus();
+    });
+  });
+
+  document.addEventListener("click", function () { abrir(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { abrir(false); btn.focus(); }
+  });
+})();
+
+aplicarIdioma(LANG);
+</script>
+</body>
+</html>
