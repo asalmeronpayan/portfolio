@@ -1,2 +1,2 @@
 # portfolio
-Personal Web Developer Portfolio Arnau Salmeron
+Personal Web Developer Portfolio
